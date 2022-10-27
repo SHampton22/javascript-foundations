@@ -7,10 +7,15 @@ class Medusa {
         this.statues = [];
     }
 
-    gazeAtVictim(victim) {
-        victim = new Statue(victim.name)
-        this.statues.push(victim);
-        console.log(this.statues);
+    gazeAtVictim(person) {
+        var victim = new Statue(person.name)
+        if (this.statues.length <= 2) { 
+            this.statues.push(victim);
+        } else if (this.statues.length === 3) {
+            this.statues.push(victim)
+            var survivor = this.statues.shift()
+            return new Person(survivor.name, 'relieved')
+        }
     }
 
 }
